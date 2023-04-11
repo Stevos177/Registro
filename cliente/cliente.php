@@ -24,21 +24,22 @@ include('../config/database.php');
         $Telefono = $params['Telefono'];
         $Personadecontacto = $params['Personadecontacto'];
         $Ciudad = $params['Ciudad'];
-        $Fecha = $params['Fecha'];
+        $imagen = $params['imagen'];
         $email = $params['email'];
 
-        $insert = "INSERT INTO clientes VALUES (NULL, '$Nit', '$NombreoRazonsocial', '$Tipodepersona', '$Responsabilidad', '$Direccion', '$Telefono', '$Personadecontacto', '$Ciudad', '$Fecha', '$email')";
+        $insert = "INSERT INTO clientes VALUES (NULL, '$Nit', '$NombreoRazonsocial', '$Tipodepersona', '$Responsabilidad', '$Direccion', '$Telefono', '$Personadecontacto', '$Ciudad', '$imagen', '$email')";
         return mysqli_query($this->conexion, $insert);
     }
 
-    function getALL(){
+    function getAll(){
 
         $sql = "SELECT * FROM clientes";
         return mysqli_query($this->conexion, $sql);
     }
 
-    function getOne($id){
-        $sql = "SELECT * FROM clientes WHERE id = $id";
+    function getOne($id)
+    {
+        $sql = "SELECT * FROM clientes WHERE id=$id";
         return mysqli_query($this->conexion, $sql);
     }
 
@@ -52,11 +53,11 @@ include('../config/database.php');
         $Telefono=$params['Telefono'];
         $Personadecontacto=$params['Personadecontacto'];
         $Ciudad=$params['Ciudad'];
-        $Fecha=$params['Fecha'];
+        $imagen=$params['imagen'];
         $email=$params['email'];
         $id=$params['id'];
 
-        $update=" UPDATE clientes SET Nit= '$Nit', NombreoRazonsocial= '$NombreoRazonsocial' , Tipodepersona= '$Tipodepersona' , Responsabilidad= '$Responsabilidad' , Direccion= '$Direccion' , Telefono= $Telefono , Personadecontacto= '$Personadecontacto' , Ciudad= '$Ciudad' , Fecha= '$Fecha' , email= '$email' WHERE id= $id ";
+        $update=" UPDATE clientes SET  Nit='$Nit', NombreoRazonsocial='$NombreoRazonsocial' , Tipodepersona= '$Tipodepersona' , Responsabilidad= '$Responsabilidad' , Direccion= '$Direccion' , Telefono= $Telefono , Personadecontacto= '$Personadecontacto' , Ciudad= '$Ciudad' , imagen= '$imagen' , email= '$email' WHERE id= $id ";
 
         return mysqli_query ($this->conexion, $update);
     }

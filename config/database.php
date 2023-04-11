@@ -1,10 +1,10 @@
 <?php
 
 class Database{
-    public $host ='localhost';
-    public $user ='root';
-    public $pass ='';
-    public $db ='registro';
+    public $host ='localhost';  //servidor
+    public $user ='root';  //usuario Papmyadmin
+    public $pass =''; //Contraseña de phpMyadmin
+    public $db ='registro'; //Base de datos
     public $conexion;
 
     

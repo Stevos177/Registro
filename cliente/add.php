@@ -4,9 +4,13 @@ include_once('../config/config.php');
 include('cliente.php');
 
 if ( isset($_POST) && !empty($_POST) ){
-  $p= new cliente();
+  $c= new cliente();
 
-  $save = $p->save($_POST);
+  if($_FILES['imagen']['name'] !==''){
+    $_POST['imagen'] = saveImage($_FILES);
+  }
+
+  $save = $c->save($_POST);
   if ($save){
     $mensaje = '<div class="alert alert-succes" > Cliente registrado </div>';
     } else {
@@ -18,11 +22,12 @@ if ( isset($_POST) && !empty($_POST) ){
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8"/>
     <title>Registrar cliente</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 </head>
 <body>
+<?php include('../menu.php') ?>
     <div class="container" >
         <?php
          if(isset($mensaje)){
@@ -70,7 +75,7 @@ if ( isset($_POST) && !empty($_POST) ){
 
             <div class="row mb-2" >
                 <div class="col">
-                    <input type="datetime-local" name="Fecha" id="Fecha" class="form-control" />
+                    <input type="file" name="imagen" id="imagen" placeholder='Logo' class="form-control" />
                 </div>                    
                 <div  class="col">
                     <input type="email" name="email" id="email" placeholder="email del cliente" class="form-control" />
